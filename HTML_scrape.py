@@ -12,9 +12,8 @@ def html_scrape():
     # phantom pretends to be a browser in order to use info given
     driver = webdriver.PhantomJS()
     # open page to scrape
-    driver.get(
-        'https://www.redditgifts.com/gallery/#/?type=exchanges&pageNumber'
-        '=1&pageSize=21&sort=date&sortDirection=DESC')
+    driver.get('https://www.redditgifts.com/gallery/#/?type=exchanges'
+               '&pageNumber=1&pageSize=21&sort=date&sortDirection=DESC')
     # parse it
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # get each title out
