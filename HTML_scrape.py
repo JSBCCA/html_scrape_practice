@@ -67,6 +67,7 @@ def show_html(data):
 rel="stylesheet"
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="scrapecss.css" />
     </head>
     <body>
         <div class="container-fluid">
