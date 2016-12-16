@@ -41,25 +41,24 @@ def html_scrape():
 
 # create table rows
 def show_datum(datum):
-    return '''<tr>
-                <td>
-                  <div>
-                    <a href="{}">{}</a>
+    return '''<div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div><a href="{}">{}</a></div>
+                    <div><img src="{}"></div>
+                    <div>[Upvotes: {}]</div>
                   </div>
-                  <div>
-                    <img src="{}">
-                  </div>
-                </td>
-                <td>
-                  [Upvotes: {}]
-                </td>
-              </tr>
 '''.format(datum[2], datum[1], datum[3], datum[0])
 
 
 # create html and table
 def show_html(data):
-    rows = ''.join(show_datum(d) for d in data)
+    # rows = ''.join(show_datum(d) for d in range(len(data)))
+    rows = ""
+    for i in range(len(data)):
+        rows += show_datum(data[i])
+        if i % 3 == 2:
+            rows += "</div><div>"
+        rows += "</div>"
     return '''
 <html>
     <head>
@@ -67,31 +66,14 @@ def show_html(data):
 rel="stylesheet"
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="scrapecss.css" />
+        <link rel="stylesheet" type="text/css" href="/static/scrapecss.css" />
     </head>
     <body>
         <div class="container-fluid">
-            <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1
-col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Reddit Gifts</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                {timestamp}
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+            <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div>Reddit Gifts</div>
+                <div>{rows}</div>
+                <div>{timestamp}</div>
             </div>
         </div>
     </body>
