@@ -41,24 +41,21 @@ def html_scrape():
 
 # create table rows
 def show_datum(datum):
-    return '''<div>
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <div><a href="{}">{}</a></div>
-                    <div><img src="{}"></div>
-                    <div>[Upvotes: {}]</div>
-                  </div>
+    return '''<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div><a href="{}">{}</a></div>
+                <div><img src="{}"></div>
+                <div>[Upvotes: {}]</div>
+              </div>
 '''.format(datum[2], datum[1], datum[3], datum[0])
 
 
 # create html and table
 def show_html(data):
     # rows = ''.join(show_datum(d) for d in range(len(data)))
-    rows = ""
-    for i in range(len(data)):
-        rows += show_datum(data[i])
-        if i % 3 == 2:
-            rows += "</div><div>"
-        rows += "</div>"
+    rows = [data[i:i + 3] for i in range(0, len(data), 3)]
+    rows = ''.join(
+        '<div class="row">{}</div>'.format(''.join(show_datum(d) for d in row))
+        for row in rows)
     return '''
 <html>
     <head>

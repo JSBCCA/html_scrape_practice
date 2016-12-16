@@ -1,3 +1,8 @@
 body {
   background-image: url("/static/snow.jpg");
 };
+
+div {
+  border-color: black;
+  border-width: medium;
+}
