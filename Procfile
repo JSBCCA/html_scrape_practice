@@ -1,0 +1,1 @@
+web: gunicorn --log-file - HTML_scrape:app
